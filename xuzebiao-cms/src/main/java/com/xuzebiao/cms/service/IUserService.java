@@ -14,8 +14,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+	//注册方法
 	User register(String username, String password, Gender gender);
 
+	//登录方法
 	User login(String username, String password);
 
 }

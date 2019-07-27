@@ -2,18 +2,41 @@ package com.xuzebiao.cms.forms;
 
 import com.xuzebiao.cms.enums.Gender;
 
+
+/**
+ * 
+ * <p>
+ * 前台表单信息
+ * </p>
+ * 
+ * @author xuzebiao
+ * @since 2019-07-27
+ *
+ *
+ */
+
 public class UserForm {
 	
+	//用户姓名
 	private String username;
+	//用户密码
 	private String password;
+	//重复输入密码
 	private String rePassword;
+	//
 	private String url;
+	//性别
 	private Gender gender;
 	
+	//无参构造
 	public UserForm() {
 		super();
 	}
 
+	/**
+	 * 私有变量getter,setter
+	 *
+	 */
 	public String getUsername() {
 		return username;
 	}
@@ -54,12 +77,19 @@ public class UserForm {
 		this.gender = gender;
 	}
 
+	//重写toString用于信息展示
 	@Override
 	public String toString() {
 		return "UserForm [username=" + username + ", password=" + password + ", rePassword=" + rePassword + ", url="
 				+ url + ", gender=" + gender + "]";
 	}
 
+	
+	/**
+	 * 
+	 * 重写 hashCode()和equals()
+	 * 
+	 * */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,7 +135,6 @@ public class UserForm {
 			return false;
 		return true;
 	}
-	
 	
 	
 }
