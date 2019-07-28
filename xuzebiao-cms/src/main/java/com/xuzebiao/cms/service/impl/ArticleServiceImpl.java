@@ -3,7 +3,12 @@ package com.xuzebiao.cms.service.impl;
 import com.xuzebiao.cms.domain.Article;
 import com.xuzebiao.cms.dao.ArticleMapper;
 import com.xuzebiao.cms.service.IArticleService;
+import com.xuzebiao.cms.vo.ArticleVo;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.bawei.common.utils.AssertUtil;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +21,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
+
+	@Override
+	public List<ArticleVo> listArticleVoByUserId(Integer userId) {
+		
+		AssertUtil.assertNotNull(userId,"用户id不能为空");
+		List<ArticleVo> list = baseMapper.listArticlesByUserId(userId);
+		
+		return list;
+	}
 
 }

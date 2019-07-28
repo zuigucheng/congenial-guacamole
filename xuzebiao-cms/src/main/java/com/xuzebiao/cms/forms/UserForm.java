@@ -1,5 +1,7 @@
 package com.xuzebiao.cms.forms;
 
+import java.io.Serializable;
+
 import com.xuzebiao.cms.enums.Gender;
 
 
@@ -15,8 +17,12 @@ import com.xuzebiao.cms.enums.Gender;
  *
  */
 
-public class UserForm {
+public class UserForm implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//用户姓名
 	private String username;
 	//用户密码

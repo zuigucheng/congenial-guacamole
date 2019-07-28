@@ -9,9 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bawei.common.utils.AssertUtil;
 import com.xuzebiao.cms.domain.User;
+import com.xuzebiao.cms.enums.Gender;
 import com.xuzebiao.cms.forms.UserForm;
+import com.xuzebiao.cms.forms.UserProfileForm;
 import com.xuzebiao.cms.service.IUserService;
 import com.xuzebiao.web.Constant;
+
+import java.sql.Timestamp;
 
 import javax.servlet.http.HttpSession;
 
@@ -119,7 +123,7 @@ public class UserController {
 			AssertUtil.assertNotNull(user,"用户不存在");
 			
 			//断言通过则将对象信息存入session
-			session.setAttribute(Constant.LOGIN_NAME, user);
+			session.setAttribute(Constant.LOGIN_USER, user);
 			
 			//返回用户主页
 			mav.setViewName("user-space/home");
@@ -129,6 +133,64 @@ public class UserController {
 			//返回登陆页面
 			mav.setViewName("passport/login");
 		}
+		
+		return mav;
+	}
+	
+	@GetMapping("profile")
+	public ModelAndView toChangeUserInformation(HttpSession session) {
+		ModelAndView mav = new ModelAndView("user-space/profile");
+		
+		try {
+			User user = (User) session.getAttribute(Constant.LOGIN_USER);
+			User user2 = userService.getUnLockedUser(user.getId());
+			
+			System.out.println(user2);
+			
+			UserProfileForm userForm = new UserProfileForm();
+			
+			userForm.setUsername(user2.getUsername());
+			userForm.setPassword(user2.getPassword());
+			userForm.setGender(user2.getGender()==1?Gender.MALE:Gender.FAMALE);
+			userForm.setBirthday(user2.getBirthday());
+			userForm.setNickname(user2.getNickname());
+			userForm.setId(user2.getId());
+
+			System.out.println(userForm);
+			
+			mav.addObject("userForm", userForm);
+		} catch (Exception e) {
+			mav.addObject("message", e.getMessage());
+			mav.setViewName("passport/login");
+		}
+		
+		return mav;
+	}
+	
+	
+	@PostMapping("profile")
+	public ModelAndView changeUserInformation(@ModelAttribute("userForm") UserProfileForm userForm) {
+		ModelAndView mav = new ModelAndView("user-space/profile");
+		
+		try {
+			AssertUtil.assertHasLength(userForm.getUsername(), "用户名不能为空");
+			AssertUtil.assertHasLength(userForm.getNickname(), "昵称不能为空");
+			
+			User user = new User();
+			user.setId(userForm.getId());
+			user.setBirthday(userForm.getBirthday());
+			user.setGender(userForm.getGender() == Gender.MALE ? 1:0);
+			user.setNickname(userForm.getNickname());
+			user.setUpdated(new Timestamp(System.currentTimeMillis()));
+			
+			boolean result = userService.saveOrUpdate(user);
+			
+			AssertUtil.assertTrue(result, "用户保存失败");
+		} catch (Exception e) {
+			mav.addObject("message", e.getMessage());
+		}
+		
+		mav.addObject("userForm",userForm);
 		
 		return mav;
 	}

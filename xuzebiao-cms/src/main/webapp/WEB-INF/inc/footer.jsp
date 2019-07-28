@@ -6,4 +6,5 @@
 	</div>
 </div>
 	<script type="text/javascript" src="/libs/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/libs/poper/popper.min.js"></script>
 	<script type="text/javascript" src="/libs/bootstrap/js/bootstrap.min.js"></script>

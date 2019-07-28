@@ -1,5 +1,8 @@
+<%@page import="com.xuzebiao.cms.enums.Gender"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
@@ -41,7 +44,41 @@
 			<div class="col-md-9">
 				<div class="panel panel-default">
 				  <div class="panel-body">
-				    右边区域
+				   <h1>信息设置</h1>
+						<hr/>
+						<p>
+						<form:form modelAttribute="userForm" action="/user/profile"
+							class="form-inline" method="post">
+							<form:hidden path="id"></form:hidden>
+							<p align="center" class="red">${message}</p>
+							<p>
+								用户名：
+								<form:input path="username" placeholder="请填写用户名"
+									class="form-control" />
+							</p>
+							<p class="w-100">
+								昵&nbsp;&nbsp;&nbsp;&nbsp;称：
+								<form:input path="nickname" placeholder="请填写昵称"
+									class="form-control" />
+							</p>
+							<p class="w-100">
+								出生年月：
+								<form:input path="birthday" type="date" class="form-control" />
+							</p>
+							<p class="w-100">
+								性 别：
+								<div class="form-check form-check-inline">
+								  <form:radiobutton class="form-check-input" path="gender" value="<%=Gender.MALE%>"/>
+								  <label class="form-check-label" for="inlineRadio1">女士</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <form:radiobutton class="form-check-input" path="gender" value="<%=Gender.FAMALE%>"/>
+								  <label class="form-check-label" for="inlineRadio1">先生</label>
+								</div>
+							<p class="w-100">
+								<button type="submit" class="btn btn-info">修改</button>
+							</p>
+						</form:form>
 				  </div>
 				</div>
 				

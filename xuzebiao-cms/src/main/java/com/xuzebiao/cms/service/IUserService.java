@@ -20,4 +20,6 @@ public interface IUserService extends IService<User> {
 	//登录方法
 	User login(String username, String password);
 
+	User getUnLockedUser(Integer id);
+
 }

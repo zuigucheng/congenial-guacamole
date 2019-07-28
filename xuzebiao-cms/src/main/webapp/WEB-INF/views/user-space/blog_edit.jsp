@@ -12,15 +12,11 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.min.css"/>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/cms.css"/>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <!-- <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script> -->
     <style type="text/css">
     </style>
   </head>
@@ -45,9 +41,10 @@
 				<div class="panel panel-default">
 				  <div class="panel-body">
 				    	<h1>发布博客</h1>
+				    	<span>${message}</span>
 				    	<hr/>
 				    	
-				    	<form:form modelAttribute="blog" action="/my/blog/save" enctype="multipart/form-data" method="post" >
+				    	<form:form modelAttribute="blog" action="/article/edit" enctype="multipart/form-data" method="post" >
 				    	<form:hidden path="id"/>
 				    	<p align="center" class="red"><form:errors path="id"/> </p>
 				    	<p>
@@ -94,8 +91,8 @@
 	</div>
 	
 	<jsp:include page="/WEB-INF/inc/footer.jsp"/>
-	
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+    <link href="/libs/summernote/summernote.css" rel="stylesheet" type="text/css">
+    <script src="/libs/summernote/summernote.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#content").summernote({

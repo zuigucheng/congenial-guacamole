@@ -111,4 +111,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 		return reslut;
 	}
 
+	@Override
+	public User getUnLockedUser(Integer id) {
+		User result;
+		
+		User user = this.getOne(new QueryWrapper<User>().eq("id", id).eq("locked", 0));
+		AssertUtil.assertNotNull(user, "该用户已锁定");
+		
+		result = new User();
+		
+		BeanUtils.copyProperties(user, result);
+		return result;
+	}
+
 }
