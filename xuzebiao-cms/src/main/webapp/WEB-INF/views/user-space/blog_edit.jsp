@@ -119,6 +119,16 @@
 				placeholder:'博客内容',
 				height:300
 			});
+			var value = "";
+		    var style = "";
+
+			var str = $("#title").val();
+			
+			value += str.substring(str.indexOf(">")+1,str.lastIndexOf("<"));
+			style += str.substring(str.indexOf("'")+1,str.lastIndexOf("'"));
+			
+			$("#title").val(value);
+			$("#title").attr("style",style);
 			
 		});
 		function sub() {

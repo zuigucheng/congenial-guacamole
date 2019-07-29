@@ -23,4 +23,6 @@ public interface IArticleService extends IService<Article> {
 
 	ArticleVo findArticleAuthorById(Integer articleId);
 
+	ArticleVo findArticleById(Integer articleId);
+
 }

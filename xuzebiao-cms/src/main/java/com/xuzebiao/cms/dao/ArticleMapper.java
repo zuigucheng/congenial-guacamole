@@ -23,4 +23,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
 
 	ArticleVo findArticleAuthorById(Integer articleId);
 
+	ArticleVo findArticleById(Integer articleId);
+
 }

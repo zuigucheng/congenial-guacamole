@@ -45,4 +45,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 		return baseMapper.findArticleAuthorById(articleId);
 	}
 
+	@Override
+	public ArticleVo findArticleById(Integer articleId) {
+		return baseMapper.findArticleById(articleId);
+	}
+
 }

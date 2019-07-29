@@ -47,6 +47,7 @@
 				<div class="panel panel-default">
 				  <div class="panel-body">
 				    	<h1>我的博客</h1>
+				    	${message}
 				    	<hr/>
 				    	<table class="table table-striped table-bordered table-hover">
 				    		<thead>
@@ -67,11 +68,17 @@
 				    				<td>${blog.hits}</td>
 				    				<td>${blog.comments}</td>
 				    				<td><fmt:formatDate value="${blog.updated}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				    				<td><a href="/my/blog/edit?id=${blog.id}" title="编辑"><span class="glyphicon glyphicon-edit"></span></a>&nbsp;&nbsp;
-				    				<a href="#" onclick="removeBlog(${blog.id});" title="删除"><span class="glyphicon glyphicon-remove"></span></a></td>
+				    				<td>
+				    				<a href="/article/edit?articleId=${blog.id}" >
+				    					<img style="weight:16px;height: 16px;" alt="编译" src="/images/open-iconic/svg/task.svg">
+				    				</a>
+				    				<a href="/article/remove?id=${blog.id}">
+				    					<img style="weight:16px;height: 16px;" alt="删除" src="/images/open-iconic/svg/ban.svg">
+				    				</a>
+				    				</td>
 				    			</tr>
 				    		</c:forEach>
-				    		</tbody>
+			    		</tbody>
 				    	</table>
 				  </div>
 				</div>

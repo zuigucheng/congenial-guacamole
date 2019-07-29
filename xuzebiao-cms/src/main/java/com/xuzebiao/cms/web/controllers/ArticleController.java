@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,11 +54,19 @@ public class ArticleController {
 
 	//跳转到文章编译页面
 	@GetMapping("edit")
-	public ModelAndView toEditArticle() {
+	public ModelAndView toEditArticle(@RequestParam(required = false,value = "articleId")Integer articleId) {
 		ModelAndView mav = new ModelAndView("user-space/blog_edit");
-
 		//新建blog表单对象
 		BlogForm blog = new BlogForm();
+
+		if (articleId!=null) {
+			ArticleVo article = articleService.findArticleById(articleId);
+			blog.setTitle(article.getTitle());
+			blog.setContent(article.getContent());
+			blog.setSummary(article.getSummary());
+			blog.setCategory(article.getCategory());
+			blog.setCover(article.getPicture());
+		}
 
 		//获取所有栏目列表
 		List<Category> list = categoryService.list();
@@ -177,6 +186,21 @@ public class ArticleController {
 		mav.addObject("blog",blog);
 		mav.addObject("comments",comments);
 		mav.addObject("hotBlogs",hotBlogs);
+		
+		return mav;
+	}
+	@GetMapping("/remove")
+	public ModelAndView delectOne(@ModelAttribute("id")Integer id) {
+		ModelAndView mav = new ModelAndView();
+		boolean removeById = articleService.removeById(id);
+		
+		if (removeById) {
+			mav.addObject("message", "删除成功");
+			mav.setViewName("user-space/blog_list");
+		}else {
+			mav.addObject("message", "删除失败");
+			mav.setViewName("redirect:/article/list");
+		}
 		
 		return mav;
 	}

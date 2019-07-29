@@ -124,4 +124,24 @@
     	JOIN cms_user ON cms_article.user_id=cms_user.id
     	WHERE cms_article.id=#{articleId}
     </select>
+    
+    <select id="findArticleById" resultMap = "ArticleVoResultMap">
+    	SELECT 
+    		cms_article.id as id,
+    		cms_article.title as title,
+    		cms_article.summary as summary,
+    		cms_article.content as content,
+    		cms_article.picture as picture,
+    		cms_article.status as status,
+    		cms_article.hits as hits,
+    		cms_article.hot as hot,
+    		cms_article.created as created,
+    		cms_article.updated as updated,
+    		cms_article.type as type,
+    		cms_category.id as cateid,
+    		cms_category.name as cat_name
+    	FROM cms_article
+    	JOIN cms_category ON cms_article.category_id=cms_category.id
+    	WHERE cms_article.id=#{id} 
+    </select>
 </mapper>
