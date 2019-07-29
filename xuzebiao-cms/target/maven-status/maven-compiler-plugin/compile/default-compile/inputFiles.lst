@@ -20,6 +20,7 @@ D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\dao\Com
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\service\impl\CommentsServiceImpl.java
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\domain\Settings.java
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\web\controllers\CommentsController.java
+D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\vo\ImageArticle.java
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\service\ICategoryService.java
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\web\controllers\ChannelController.java
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\domain\Category.java
@@ -40,3 +41,4 @@ D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\web\con
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\web\Constant.java
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\dao\UserMapper.java
 D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\dao\ChannelMapper.java
+D:\git\repository\repository\xuzebiao-cms\src\main\java\com\xuzebiao\cms\enums\ArticleType.java
