@@ -31,6 +31,11 @@ public class Article implements Serializable {
      */
     @TableField("title")
     private String title;
+    /**
+     * 文章标题
+     */
+    @TableField("type")
+    private Integer type;
 
     /**
      * 文章内容摘要
@@ -202,8 +207,16 @@ public class Article implements Serializable {
     public void setUpdated(Timestamp updated) {
         this.updated = updated;
     }
+    
+	public Integer getType() {
+		return type;
+	}
 
-    @Override
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	@Override
     public String toString() {
         return "Article{" +
             "id=" + id +
@@ -220,6 +233,7 @@ public class Article implements Serializable {
             ", deleted=" + deleted +
             ", created=" + created +
             ", updated=" + updated +
+            ", type=" + type +
         "}";
     }
 }

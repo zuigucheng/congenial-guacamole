@@ -21,6 +21,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
 
 	List<ArticleVo> listArticlesByCateId(Integer categoryId);
 
-	Article findArticleAuthorById(Integer articleId);
+	ArticleVo findArticleAuthorById(Integer articleId);
 
 }

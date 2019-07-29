@@ -17,6 +17,14 @@ public class ArticleVo extends Article{
 	private User author;
 	private List<?> comments;
 	
+	private List<ImageArticle> imageArticles;
+	
+	public List<ImageArticle> getImageArticles() {
+		return imageArticles;
+	}
+	public void setImageArticles(List<ImageArticle> imageArticles) {
+		this.imageArticles = imageArticles;
+	}
 	public List<?> getComments() {
 		return comments;
 	}
@@ -46,8 +54,8 @@ public class ArticleVo extends Article{
 	}
 	@Override
 	public String toString() {
-		return "ArticleVo [category=" + category + ", channel=" + channel + ", author=" + author + ", comments="
-				+ comments + "]";
+		return super.toString() + "\n ArticleVo [category=" + category + ", channel=" + channel + ", author=" + author + ", comments="
+				+ comments + ", imageArticles=" + imageArticles + "]";
 	}
 	
 	
