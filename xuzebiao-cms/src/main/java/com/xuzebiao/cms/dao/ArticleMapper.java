@@ -19,4 +19,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
 
 	List<ArticleVo> listArticlesByUserId(Integer userId);
 
+	List<ArticleVo> listArticlesByCateId(Integer categoryId);
+
 }

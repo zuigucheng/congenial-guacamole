@@ -19,7 +19,7 @@
    	<%-- 登录显示用户菜单 --%>
     <c:when test="${_LOGIN_USER_  != null}">
    	 <li class="nav-item">
-   		<a class="nav-link" href="/my/home">
+   		<a class="nav-link" href="/user/home">
 		<img alt="" src="/images/default_avatar.png" style="max-height: 2.5rem" class="rounded img-fluid">
    		</a>
    	 </li>

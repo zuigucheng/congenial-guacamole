@@ -19,4 +19,6 @@ public interface IArticleService extends IService<Article> {
 
 	List<ArticleVo> listArticleVoByUserId(Integer userId);
 
+	List<ArticleVo> listArticlesByCateId(Integer categoryId);
+
 }

@@ -194,4 +194,11 @@ public class UserController {
 		
 		return mav;
 	}
+	
+	@GetMapping("/home")
+	public ModelAndView toHome() {
+		//返回主页信息
+		ModelAndView mav = new ModelAndView("/user-space/home");
+		return mav;
+	}
 }

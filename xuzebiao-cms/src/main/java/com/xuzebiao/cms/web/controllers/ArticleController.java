@@ -88,7 +88,7 @@ public class ArticleController {
 			AssertUtil.assertHasLength(blog.getContent(), "内容不能为空");
 			AssertUtil.assertNotNull(blog.getCategory(), "栏目不能为空");
 
-			
+			System.out.println(blog.getTitle());
 			//新建对象并赋值
 			Article article = new Article();
 

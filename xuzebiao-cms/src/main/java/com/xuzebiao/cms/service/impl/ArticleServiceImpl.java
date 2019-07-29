@@ -31,4 +31,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 		return list;
 	}
 
+	@Override
+	public List<ArticleVo> listArticlesByCateId(Integer categoryId) {
+		return baseMapper.listArticlesByCateId(categoryId);
+	}
+
 }
