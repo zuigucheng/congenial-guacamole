@@ -2,6 +2,7 @@ package com.xuzebiao.cms.web.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,6 +12,7 @@ import com.bawei.common.utils.AssertUtil;
 import com.bawei.common.utils.AssertionException;
 import com.xuzebiao.cms.domain.Article;
 import com.xuzebiao.cms.domain.Category;
+import com.xuzebiao.cms.domain.Comments;
 import com.xuzebiao.cms.domain.User;
 import com.xuzebiao.cms.forms.BlogForm;
 import com.xuzebiao.cms.service.IArticleService;
@@ -145,6 +147,21 @@ public class ArticleController {
 		//通过用户id获取博客列表
 		List<ArticleVo> blogs = articleService.listArticleVoByUserId(userId);
 		mav.addObject("blogs",blogs);
+		
+		return mav;
+	}
+	
+	@GetMapping("/{articleId}")
+	public ModelAndView toShowArticle(@PathVariable("articleId") Integer articleId) {
+		ModelAndView mav = new ModelAndView("blog");
+		Article blog = articleService.findArticleAuthorById(articleId);
+		
+		Comments comments = null;
+		Article hotBlogs = null;
+		
+		mav.addObject("blog",blog);
+		mav.addObject("comments",comments);
+		mav.addObject("hotBlogs",hotBlogs);
 		
 		return mav;
 	}

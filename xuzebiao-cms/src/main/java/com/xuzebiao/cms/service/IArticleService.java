@@ -21,4 +21,6 @@ public interface IArticleService extends IService<Article> {
 
 	List<ArticleVo> listArticlesByCateId(Integer categoryId);
 
+	Article findArticleAuthorById(Integer articleId);
+
 }
