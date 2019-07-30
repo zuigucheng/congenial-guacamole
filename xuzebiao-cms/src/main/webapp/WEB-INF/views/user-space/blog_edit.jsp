@@ -56,14 +56,6 @@
 								<form:input path="title" class="form-control" placeholder="博客标题"
 									id="title" />
 								<span class="red"><form:errors path="title" /></span>
-							<div class="btn-group" role="group" aria-label="Basic example">
-								<button type="button" class="btn btn-secondary"
-									onclick="toChang('B')">B</button>
-								<button type="button" class="btn btn-secondary"
-									onclick="toChang('I')">I</button>
-								<button type="button" id="Cbutton"
-									class="btn btn-secondary jscolor" onclick="toChang('C')">C</button>
-							</div>
 							</p>
 
 							<p>
@@ -119,48 +111,7 @@
 				placeholder:'博客内容',
 				height:300
 			});
-			var value = "";
-		    var style = "";
-
-			var str = $("#title").val();
-			
-			value += str.substring(str.indexOf(">")+1,str.lastIndexOf("<"));
-			style += str.substring(str.indexOf("'")+1,str.lastIndexOf("'"));
-			
-			$("#title").val(value);
-			$("#title").attr("style",style);
-			
 		});
-		function sub() {
-			var title = $("#title").val();
-			var style = $("#title").attr("style");
-			title = "<span style='"+style+"'>"+title+"</span>";
-			$("#title").val(title);
-			$("#blog").submit();
-		}
-		
-		function toChang(c) {
-
-			if(c == 'B') {
-				var font_weight = $("#title").css("font-weight");
-				if(font_weight == 400) {
-					$("#title").css("font-weight", "bold");
-				} else {
-					$("#title").css("font-weight", "normal");
-				}
-			} else if(c == 'I') {
-				var font_style = $("#title").css("font-style");
-				if(font_style == "italic") {
-					$("#title").css("font-style", "normal");
-				} else {
-					$("#title").css("font-style", "italic");
-				}
-			} else if(c == 'C') {
-				var str = $("#Cbutton").text();
-				$("#title").css("color", "#" + str);
-			}
-
-		}
 	</script>
 </body>
 </html>

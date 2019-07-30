@@ -36,7 +36,6 @@
     		cms_article.status as status,
     		cms_article.hits as hits,
     		cms_article.hot as hot,
-    		cms_article.type as type,
     		cms_article.created as created,
     		cms_article.updated as updated,
     		cms_category.id as cateid,
@@ -59,7 +58,6 @@
         <result column="status" property="status" />
         <result column="created" property="created" />
         <result column="updated" property="updated" />
-        <result column="type" property="type" /> 
         <association property="category">
         	<id column="cateid" property="id"/>
         	<result column="cat_name" property="name"/>
@@ -75,7 +73,6 @@
     		cms_article.status as status,
     		cms_article.hits as hits,
     		cms_article.hot as hot,
-    		cms_article.type as type,
     		cms_article.created as created,
     		cms_article.updated as updated,
     		cms_user.id as userid,
@@ -96,7 +93,6 @@
         <result column="status" property="status" />
         <result column="created" property="created" />
         <result column="updated" property="updated" />
-        <result column="type" property="type" /> 
         <association property="author">
         	<id column="userid" property="id"/>
         	<result column="username" property="username"/>
@@ -114,7 +110,6 @@
     		cms_article.status as status,
     		cms_article.hits as hits,
     		cms_article.hot as hot,
-    		cms_article.type as type,
     		cms_article.created as created,
     		cms_article.updated as updated,
     		cms_user.id as userid,
@@ -137,7 +132,6 @@
     		cms_article.hot as hot,
     		cms_article.created as created,
     		cms_article.updated as updated,
-    		cms_article.type as type,
     		cms_category.id as cateid,
     		cms_category.name as cat_name
     	FROM cms_article

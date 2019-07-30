@@ -3,7 +3,7 @@
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} 耗时：%r 日志来自：%logger{50} 日志类型: %-5p 日志内容：%m%n</pattern>
+            <pattern> 日志内容：%m%n 日志来自：%logger{50}%n 日志类型: %-5p     %d{yyyy-MM-dd HH:mm:ss.SSS} 耗时：%r%n</pattern>
         </encoder>
     </appender>
     <!-- 按照每天生成日志文件 -->

@@ -11,21 +11,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bawei.common.utils.AssertUtil;
 import com.bawei.common.utils.AssertionException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xuzebiao.cms.domain.Article;
 import com.xuzebiao.cms.domain.Category;
 import com.xuzebiao.cms.domain.Comments;
 import com.xuzebiao.cms.domain.User;
-import com.xuzebiao.cms.enums.ArticleType;
 import com.xuzebiao.cms.forms.BlogForm;
 import com.xuzebiao.cms.service.IArticleService;
 import com.xuzebiao.cms.service.ICategoryService;
 import com.xuzebiao.cms.vo.ArticleVo;
-import com.xuzebiao.cms.vo.ImageArticle;
 import com.xuzebiao.web.Constant;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -164,21 +160,10 @@ public class ArticleController {
 		return mav;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@GetMapping("/{articleId}")
 	public ModelAndView toShowArticle(@PathVariable("articleId") Integer articleId) {
 		ModelAndView mav = new ModelAndView("blog");
 		ArticleVo blog = articleService.findArticleAuthorById(articleId);
-		
-		if (blog.getType() == ArticleType.IMAGE.getOrdinal()) {
-			ObjectMapper ma = new ObjectMapper();
-			try {
-				List<ImageArticle> imageArticles = ma.readValue(blog.getContent(), List.class);
-				blog.setImageArticles(imageArticles);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 		
 		Comments comments = null;
 		Article hotBlogs = null;
@@ -189,6 +174,8 @@ public class ArticleController {
 		
 		return mav;
 	}
+	
+	
 	@GetMapping("/remove")
 	public ModelAndView delectOne(@ModelAttribute("id")Integer id) {
 		ModelAndView mav = new ModelAndView();
